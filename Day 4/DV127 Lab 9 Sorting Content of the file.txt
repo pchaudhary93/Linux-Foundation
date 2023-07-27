@@ -1,0 +1,43 @@
+Lab 9 Sorting Content of the file
+
+
+
+
+We can sort data of the file by using sort command. 
+sort filename
+ 
+Here sorting is based on alphabetical order. 
+
+
+$ sort file1.txt
+
+
+If we want to sort based on reverse of alphabetical order, then we should use -r option. 
+$ sort -r a.txt 
+
+If the file contains alphanumeric data, then first numbers will be considered and then alphabet symbols. 
+
+If the file contains only numbers, then the sorting is not based on numeric value and it is just based on digits. 
+
+If we want to sort based on numeric value then we have to use -n option. 
+-n means numeric value
+
+Bydefault sort command will display duplicate lines. If we want only unique lines then we have to use -u option. 
+-u meant for unique lines. 
+
+Note: We can use -ur and -un options also. 
+
+Sorting Tabular Data by using -k option: 
+-k means KEYDEF (key definition). Based on which key (column) we have to sort. 
+
+Sort based on file size in ascending order: 
+$ ls -l /etc | head -10 | sort -k 5n 
+
+
+Sort based on Month: 
+6th column provides total date. If we want consider only month then we should use M. 
+$ ls -l /etc | head -10 |sort -k 6M 
+
+
+Sort based on number of links in descending order: 
+$ ls -l /etc | head -10 |sort -k 2nr

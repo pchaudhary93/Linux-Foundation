@@ -1,0 +1,38 @@
+Lab 8 Word Count Command (wc command)
+
+
+We can use wc command to count number of lines, words and characters present in the given file. 
+
+
+wc filename 
+no_of_lines    no_of_words    no_of_characters  filename 
+
+
+Eg: 
+$ wc file1.txt 
+6  27 125  file1.txt
+ 
+6 🡪 Number of Lines 
+27 🡪Number of words 
+125 🡪 Number of characters (File size in bytes) 
+
+
+We can use the following options with wc Command 
+-l 🡪 To print only number of lines 
+
+-w 🡪 To print only number of words 
+
+-c 🡪 To print only number of characters
+
+-lw 🡪 To print only number of lines and words 
+
+-lc 🡪 To print only number of lines and characters 
+
+-wc 🡪 To print only number of words and characters 
+
+
+-L 🡪 To print number of characters present in Longest Line. 
+
+
+We can use wc command for multiple files simultaneously. 
+$ wc file1.txt file2.txt file3.txt

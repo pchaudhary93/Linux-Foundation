@@ -1,0 +1,75 @@
+Lab 6 Comparing Files
+
+
+We can compare data of two files by using the following commands: 
+1) cmp 
+2) diff 
+3) sdiff 
+4) vidiff 
+5) comm 
+
+
+1) cmp Comamnd: 
+
+
+It will compare byte by byte. 
+cmp file1.txt file2.txt 
+If content is same then we won't get any output. 
+If the content is different, then it provides information about only first difference. byte number and line number will be provided. 
+
+Note: cmp command won't show all differences and show only first difference. 
+
+
+2) diff Comamnd: 
+
+
+It will show all differences in the content. 
+diff file1.txt file2.txt 
+If the content is the same then no output. 
+If the content is different then it will show all differences. 
+
+
+For the diff command we can use the following options. 
+
+
+-q shows message when files are different. 
+
+
+-s shows message when files are same | identical 
+
+
+-y shows comparison line by line (parallel comparison) 
+
+
+If we want to suppress common lines then we should use --suppress-common-lines option with -y option. 
+$ diff -y --suppress-common-lines file1.txt file2.txt
+
+3) sdiff Command: 
+
+
+We can use sdiff command for side by side comparison (parallel comparison) 
+$ sdiff a.txt b.txt 
+  
+Note: sdiff comamnd and diff command with -y option are same.
+
+
+4) vimdiff Command: 
+
+
+* It will highlight differences in vim. 
+* To support this command, we have to install vim by using the following command. 
+* sudo apt install vim 
+
+
+* vimdiff a.txt b.txt
+* ctrl+w+w 🡪 To go to next window 
+* :q 🡪 Close current window 
+* :qa 🡪 Close all windows 
+* :qa! 🡪 Close all windows forcely. 
+
+
+5) comm Command: 
+By using this command we can compare data of two files. 
+comm filea.txt fileb.txt
+
+ Note: We can compare files from various builds by using our comparison commands (cmp, diff, sdiff, vimdiff, comm).

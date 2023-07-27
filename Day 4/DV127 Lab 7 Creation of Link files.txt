@@ -1,0 +1,74 @@
+Lab 7 Creation of Link files
+
+
+
+
+There are 2 types of link files 
+
+
+1) Hard Link files 
+2) Soft Link files 
+
+
+1. Hard Link Files: 
+
+
+It is just another name of the same exact file. 
+We can create hard link file by using ln command. 
+ln originalfile hardlinkfile 
+
+
+Eg: ln a.txt c.txt 
+Here a.txt is original file and b.txt is hard link file. 
+
+Important conclusions about hard link file: 
+
+
+1) Both original file and hardlink file have same inode number, same size, same timestamp. 
+2) If we delete original file, then there is no effect on hardlink file. 
+
+
+2. Soft Link File: 
+
+
+* A softlink is a pointer to another file. It is just like windows shortcut. 
+* It is also known as symbolic link. 
+* We can create soft link file by using ln command but with -s option. 
+* ln -s originalfile softlinkfile 
+
+Eg: ln -s file1.txt file2.txt 
+Here file1.txt is original file and file2.txt is link file. 
+
+Important conclusions about softlink file: 
+1) Original file and softlink file have different inode numbers, different file sizes and different timestamps. 
+2) Usually softlink file has smaller file size than original file size. 
+3) If we delete original file then softlink files will become useless. 
+
+
+Link files for directories: 
+
+
+We cannot create hardlink for directories because it breaks Linux File System. Having two root directories is meaningless. 
+
+
+$ ln dir1 dir2 
+ln: dir1: hard link not allowed for directory 
+We can create softlink for directories 
+$ ln -s dir1 dir2 
+
+Note: For files we can create both hard and soft links. But for directories we can create only softlinks butnot hardlinks. 
+
+
+Case Study: 
+Assume dir1 contains dir2. 
+dir2 contains softlink dir3 pointing to dir1 
+dir1 🡪 dir2 🡪 dir3 
+
+
+$ mkdir -p dir1/dir2 
+$ cd dir1/dir2 
+$ ln -s ~/Desktop/dir1 dir3 
+It will form a loop. 
+
+
+Note: While creating link files there may be a chance of forming loops. Take a bit special care.

@@ -1,0 +1,43 @@
+Lab 10 Find Unique Content in the File by using uniq Command
+
+
+We can use uniq command to display unique content in the file. 
+But to use uniq command, compulsory the file should be sorted, otherwise it won't work properly. 
+
+
+
+
+$ cat a.txt 
+
+
+$ uniq a.txt 
+
+
+$ sort a.txt | uniq 
+
+
+With uniq command we can use multiple options: 
+
+
+-d 🡪 To display only duplicate lines 
+-c 🡪 To display number of occurrences of each line 
+-i 🡪 Ignore case while comparing 
+-u 🡪 To display only unique lines i.e the lines which are not duplicated.
+
+
+1. To display only duplicate lines: 
+$ sort a.txt | uniq -d 
+
+
+2. To display number of occurrences of each line: 
+$ sort a.txt | uniq –c
+
+
+3. To ignore case while comparing: 
+$ sort a.txt | uniq -i 
+
+$ sort a.txt | uniq -ic 
+
+
+4. To display only unique lines i.e the lines which are not duplicated: 
+$ sort a.txt | uniq -u
