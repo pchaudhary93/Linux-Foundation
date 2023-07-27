@@ -1,0 +1,111 @@
+Lab -1 Knowing Linux
+
+
+Unix
+
+
+* It is an operating system, by using that, users/applications can communicate with hard ware components. 
+* It was developed/created in 1960s. 
+* With lot of extensions and improvements to base version, several flavours introduced by organization/companies (flavours like Redhat linux, ubuntu, CentOS etc) 
+
+
+Features:
+  
+* It is FOSS (Freeware and Open Source Software) 
+* It can be used by multiple users simultaneously and hence it is Multi User operating System. 
+* Several tasks can be executed simultaneously and hence it is multi tasking operating system. 
+* It is user friendly and provides both CUI and GUI Support. 
+* When compared with windows, UNIX is more secured. 
+
+
+Flavours:
+
+
+        It is open source; multiple flavors are available with lot of extensions and improvements. 
+
+
+* Ubuntu 
+* RedHat 
+* Centos 
+* Fedora 
+* Slackware 
+* open solaries 
+* Suse Linux Enterprise server (SLES) 
+* Open Suse 
+ 
+
+
+Components of Unix/Linux
+
+Shell:
+ 
+* It is the outer layer of UNIX/Linux  operating System. 
+* It reads our command, verify syntax and check whether the corresponding command related application is available or not. 
+* If everything is proper, then shell interprets our command into kernel understandable form and handover to the kernel. 
+* Shell acts as interface between user and kernel. 
+
+
+Kernel: 
+
+
+* It is the core component of UNIX/Linux operating system. 
+* It is responsible to execute our commands. 
+* It is responsible to interact with hardware components. 
+* Memory allocation and processor allocation will takes care by kernel. 
+
+Command Execution Flow
+
+
+Commonly Used Basic Commands:
+
+
+
+
+	1
+	pwd
+	🡪 Print working directory 
+
+
+	2
+	ls
+	🡪 List our all files and directories 
+
+
+	3
+	mkdir
+	 🡪 Create directory 
+	4
+	rmdir
+	🡪 Remove  directory
+	5
+	cd
+	🡪 Change directory
+	6
+	touch
+	 🡪 To create an empty file 
+
+
+	7
+	rm
+	 🡪 To remove file 
+	8
+	cal
+	 🡪 Display Monthly Calander 
+	9
+	date
+	🡪 Display current date and time. 
+
+
+	10
+	help
+	🡪 To display list of commands. 
+
+
+	11
+	clear
+	🡪 To clear terminal. 
+
+
+	12
+	exit
+	 🡪 To logout session

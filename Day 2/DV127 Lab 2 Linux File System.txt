@@ -1,0 +1,188 @@
+Lab 2 Linux File System
+
+Types of Files in Linux: 
+In Linux everything is treated as File. 
+All files are divided into 3 types 
+
+
+1. Normal or Ordinary files
+These files contain data. It can be either text files (like abc.txt) OR binary files (like images, videos etc). 
+
+
+2. Directory Files: 
+* These files represent directories. 
+* In windows, we can use folder terminology where as in linux we can use directory terminology. 
+* Directory can contains files and sub directories. 
+
+
+3. Device Files: 
+In Linux, every device is represented as a file. By using this file we can communicate with that device.
+How to check File Type: 
+In Ubuntu, blue color files represents directories and all remaining are considered as normal files. This color conventions are varied from flavour to flavour. Hence it is not standard way to check file type. 
+We have to use 'ls -l' command.
+drwxr-xr-x 102 root root 4096 Nov 17 21:19 magic
+ 
+
+
+The first character represents the type of file. 
+d 🡪 Directory File 
+- 🡪 Normal File 
+l 🡪 Link File 
+c 🡪 Character Special File 
+b 🡪 Block Special File 
+s 🡪 Socket File
+
+
+ Note: c, b, s are representing system files and mostly used by super user (also known as root user or admin user)
+
+
+File System Navigation Commands: 
+
+
+1. Every directory implicitly contains 2 directories . and .. 
+. represents current directory 
+.. represents parent directory 
+2. $ cd . 
+changes to current directory (useless)
+3. $ cd .. 
+Changes to parent directory
+4. $cd 
+If we are not passing any argument, then changes to user home directory. 
+5. $ cd ~ 
+~ means user home directory. 
+It will changes to user home directory. 
+6. $ cd - 
+- means previous working directory. 
+It will changes to previous working directory.
+ 
+
+Linux File System Hierarchy: 
+
+
+Linux file system has Tree Like Structure. 
+It starts with root(/). 
+/ is the topmost directory 
+This root directory contains the following important sub directories. 
+bin,sbin,lib,etc,dev,opt,home,usr,tmp,media etc
+  
+
+1) bin Directory: 
+bin means binary. This directory contains all binary executables related to our linux commands. 
+
+
+2) sbin Directory: 
+sbin means systembin. It contains all binary executables related to high end admin (super user OR root) commands. 
+Eg: Disk partitioning, network management etc 
+
+
+Q. What is the difference between bin and sbin? 
+bin contains binary executables related to commands used by normal user. 
+sbin contains binary executables related to commands used by superuser.
+
+
+
+
+3) etc Directory: 
+* This directory contains all system configuration files. These configurations can be used to customize behaviour of linux os. 
+* All users information available in /etc/passwd file. 
+* All groups information available in /etc/group file. 
+* Hosts information (ip address and dns names) available in /etc/hosts file. 
+
+
+4) tmp Directory: 
+* tmp means temporary. It contains all temporary files created in the current session. 
+* If any file is required only for the current session, then create that file inside tmp directory. These files will be deleted automatically at the time of system shutdown. 
+* If any file which is required permanently, then it is not recommended to create inside tmp directory. 
+
+
+5) dev Directory: 
+dev means device. 
+* In Linux, everything is treated as a file including devices also. i.e every device is represented as a file. By using these files, we can communicate with the devices. 
+* All device related files will be stored inside dev directory. 
+Eg: 
+tty 🡪 Terminal related File 
+fd 🡪 Floppy Drive related File 
+hd 🡪 Hard Disk related File 
+ram 🡪 RAM related File 
+stdin 🡪 standard Input Device File (keyboard) 
+stdout 🡪 Standard Output Device File (Terminal/Monitor) 
+stderr 🡪 Standard Error Device File (Terminal/Monitor) 
+6) mnt Directory: 
+* mnt means mounting. 
+* We have to attach external file system files from Pen drive, CD, external hard disk etc to the Linux File System. Then only we can use those external files. This attachment process is called mounting. 
+* In the old operating systems, we have to perform mounting manually. But in recent operating systems, mounting is performing automatically and we are not required to perform manually. 
+* The files of manual mounting will be placed inside mnt directory. 
+
+
+ 7) media Directory: 
+
+
+The files of automatic mounting will be placed inside media directory.
+Q. What is the difference between mnt and media? 
+* mnt 🡪 Contains manual mounting files. 
+* media 🡪 Contains automatic mounting files. 
+
+
+8) opt Directory: 
+* opt means optional. 
+* This directory contains all 3rd party software installation files. 
+
+
+Eg: 
+If we are installing any software explicitly like google chrome, then the corresponding installation files will be stored inside opt directory. 
+
+
+9) lib Directory: 
+lib means library. It contains Linux os libraries which are required by our commands and applications. 
+
+
+10) var Directory: 
+* var means variable data. If any data which is keep on changing, such type of data will be stored inside var directory. 
+* log files will be stored inside var. 
+
+
+11) home Directory: 
+As linux is multi user operating system, for every user a separate directory will be created to hold his specific data like videos, images, documents etc. All these user directories will be stored inside home directory. 
+$ ls /home 
+
+
+
+
+12) proc Directory: 
+proc means processes. 
+In Linux, multiple processes are running simultaneously. For every process a unique id will be there, which is also known as PID (Process ID). 
+The data related to current running processes will be stored inside proc directory. For every process a separate directory will be created inside proc to maintain that data.The name od this directory is same as PID. 
+
+
+Note: We can find all running proceses information by using ps command. 
+ps means process status.
+  
+
+13) root Directory: 
+
+
+It is the home directory of super user. 
+
+
+Q. What is the difference between / and root directories? 
+/ acts as root for Linux file system. It is the topmost directory of linux file system. 
+root is subdirectory of /, which acts as home directory for the super user. 
+
+
+14) boot Directory: 
+This directory contains the files which are required to boot linux os. 
+
+
+
+
+15) usr Directory: 
+usr means user. This directory contains all user related softwares. 
+
+
+
+
+Note: 
+1) The main advantage of Linux File System is, operating system can locate required files very easily. 
+2) For every File System, a separate name will be assigned. 
+3) ext2,ext3,ext4,XFS are names of Linux File Systems. 
+4) NTFS, FAT are names of Windows File Systems
