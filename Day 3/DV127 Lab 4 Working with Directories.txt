@@ -1,0 +1,293 @@
+Lab -4 Working with Directories
+
+1) Creation of Directories: 
+We can create directories by using mkdir command. 
+1) mkdir dir1 
+To create a directory
+ubuntu $ mkdir dir1
+ubuntu $ ls
+File-01.txt  dir1  file-01  file-01.txt  file-02  filesystem  notmyfile  notmyfile2  testDir  testdir
+ 
+2) mkdir dir1 dir2 dir3 
+To create multiple directories
+ ubuntu $ mkdir dir2 dir3
+ubuntu $ ls
+File-01.txt  dir2  file-01          file-02         notmyfile   testDir
+dir1             dir3  file-01.txt  filesystem  notmyfile2  testdir
+3) mkdir dir1/dir2/dir3 
+To create dir3. But make sure dir1 and in that dir2 should be available already. 
+  
+
+
+4) mkdir -p dir1/dir2/dir3 
+
+
+* -p means path of directories. 
+* All directories in the specified path will be created. 
+* First dir1 will be created and in that dir2 will be created and within that dir3 will be created. 
+
+
+
+ubuntu $ mkdir -p X/Y/Z
+ubuntu $ ls
+File-01.txt  dir1  dir3         file-01.txt  filesystem  notmyfile2  testdir
+X                dir2  file-01  file-02          notmyfile   testDir
+Case Study
+
+
+Create 5 directories named with dir6,dir7,dir8,dir9 and dir10. In these directories create empty files with a.txt,b.txt,c.txt and d.txt 
+
+
+$ mkdir dir{6..10} 
+ubuntu $ ls dir{1..10}
+dir1:
+
+
+dir10:
+
+
+dir2:
+
+
+dir3:
+
+
+dir4:
+
+
+dir5:
+
+
+dir6:
+
+
+dir7:
+
+
+dir8:
+
+
+dir9:
+
+
+$ touch dir{6..10}/{a..d}.txt 
+
+
+Note: *,[],{ } etc are called wild characters. We can use wild card characters in every command. 
+ubuntu $ touch dir{6..10}/{a..d}.txt
+ubuntu $ ls dir9
+a.txt  b.txt  c.txt  d.txt
+
+
+2) How to remove Directories: 
+We can remove directories by using rmdir command. 
+1. $ rmdir dir1 
+ubuntu $ rmdir dir1
+ubuntu $ ls
+File-01.txt  dir10  dir3  dir5  dir7  dir9         file-01.txt  filesystem  notmyfile2  testdir
+X                dir2   dir4  dir6  dir8  file-01  file-02          notmyfile   testDir
+
+
+To remove empty directory dir1 
+
+
+2. 2. $ rmdir dir2 dir3 dir4 
+
+
+ubuntu $ rmdir dir2 dir3 dir4
+ubuntu $ ls
+File-01.txt  dir10  dir6  dir8  file-01          file-02         notmyfile   testDir
+X                dir5   dir7  dir9  file-01.txt  filesystem  notmyfile2  testdir
+
+
+To remove multiple empty directories 
+
+Note: rmdir command will work only for empty directories. If the directory is not empty then we will get error. We cannot use rmdir for files. Hence the most useless (waste) command in linux is rmdir.
+ 
+ 
+If the directory is not empty then to remove that directory we should use rm command. All internal content also will be removed. rm command can work for files also. Hence rm is recommended to use than rmdir.
+ 
+rm: cannot remove 'dir1': Is a directory 
+Whenever we are using rm command for directories, we should use -r or -R option. Here case is not important.
+$ rm –r dir10 
+$ rm -R dir5 
+
+
+ubuntu $ rm -r dir10
+ubuntu $ ls
+File-01.txt  dir5  dir7  dir9         file-01.txt  filesystem  notmyfile2  testdir
+X                dir6  dir8  file-01  file-02          notmyfile   testDir
+ubuntu $ rm -R dir5
+ubuntu $ ls
+File-01.txt  dir6  dir8  file-01          file-02         notmyfile   testDir
+X                dir7  dir9  file-01.txt  filesystem  notmyfile2  testdir
+
+
+Note: In Linux operating system, there is no way to perform undo operation. Once we delete a file or directory, it is impossible to retrieve that. Hence while using rm command we have to take special care. 
+The following command is the most dangerous command in linux, because it removes total file system. 
+rm -r / 
+Various options with rm Command: 
+1) interactive Option(-i) 
+
+
+While removing files and directories, if we want confirmation then we have to use -i option. 
+
+
+ubuntu $ rm -ri dir6
+rm: descend into directory 'dir6'? y
+rm: remove regular empty file 'dir6/b.txt'? y
+rm: remove regular empty file 'dir6/a.txt'? y
+rm: remove regular empty file 'dir6/c.txt'? y
+rm: remove regular empty file 'dir6/d.txt'? y
+rm: remove directory 'dir6'? y
+ubuntu $ ls
+File-01.txt  dir7  dir9         file-01.txt  filesystem  notmyfile2  testdir
+X                dir8  file-01  file-02          notmyfile   testDir
+
+
+2) force removal(-f): 
+
+
+While removing files and directories, if we don't want any error messages, then we should use -rf option. It is opposite to -i option. 
+  
+
+
+
+3) verbose Option(-v): 
+
+
+If we want to know the sequence of removals on the screen we should go for -v option. 
+  
+
+Case Study: 
+  
+
+Write commands to create the following directory structure 
+1nd way: 
+$ mkdir x x/x1 x/x2 x/x1/x11 x/x1/x12 y y/y1 y/y2 y/y1/y11 y/y1/y12 
+  
+
+
+
+2rd way: 
+$ mkdir -p x/x1/x11 x/x1/x12 x/x2 y/y1/y11 y/y1/y12 y/y2 
+  
+
+
+
+Absolute Path vs Relative Path: 
+Absolute Path: It is the path from root(/) to destination. ie it is complete path. 
+Relative Path: It is the path from current working directory to destination directory.It is always use current location. 
+  
+
+
+Eg 1: Assume we are in x11 directory. To change to y2 directory 
+
+
+Absolute Path: 
+$ cd /home/sample/y/y2 
+
+
+
+Relative Path: 
+$ cd ../../../y/y2
+  
+
+
+4) Copy Command (cp) 
+
+
+a) To Copy from File1 to File2 (File to File) 
+* $ cp source_file destination_file 
+* $ cp file1 file2 
+* Total content fo file1 will be copied to file2. 
+* If file2 is not already available, then this command will create that file. 
+ If file2 is already available and contains some data, then this data will be over write with file1 content. 
+  
+
+b) To Copy File to Directory: 
+* $ cp file1 file2 output 
+* file1 and file2 will be copied to output directory. 
+* Here we can specify any number of files, but last argument should be directory. 
+* output directory should be available already. 
+  
+
+c) To Copy all Files of One Directory to another Directory: 
+* $ cp sample1/* sample2 
+* All files of dir1 will be copied to dir2 
+* But dir2 should be available already. 
+
+
+d) To Copy Total Directory to another Directory: 
+* $ cp dir1 dir2 
+* cp: -r not specified; omitting directory 'dir1 
+  
+∙ Whenever we are copying one directory to another directory, compulsory we should use -r option. 
+
+
+* $ cp -r dir1 dir2 
+* total dir1 will be copied to dir2 
+
+Note: 
+If the destination directory (dir2) already available then total dir1 will be copied to dir2. 
+If the destination directory (dir2) not already available, then destination directory will be created and all files of source directory will be copied to destination directory but source directory won't be copied. 
+e) To Copy Multiple Directories into a Directories: 
+* $ cp -r dir1 dir2 dir3 dir4 dir5 
+* dir1,dir2,dir3 and dir4 will be copied to dir5 
+
+Moving and Renaming Directories: 
+Both moving and renaming activities can be performed by using single command: mv 
+
+1) Renaming of files: 
+* $ mv oldname newname 
+Eg: $ file1.txt file2.txt 
+file1.txt will be renamed to file2.txt   
+
+
+2) Renaming of Directories: 
+* $ mv dir1 dir2 
+dir1 will be renamed to dir2 
+
+3) Moving files to directory: 
+* $ mv a.txt b.txt c.txt output 
+a.txt,b.txt and c.txt will be moved to output directory. 
+
+4) Moving of all files from one directory to another directory: 
+* $ mv dirA/* dirB 
+All files of dir1 will be moved to dir2. After executing this command dir1 will become empty. 
+
+5) Moving total directory to another directory: 
+* $ mv dirA dirB
+  
+
+Note: If dir2 is already available then dir1 will be moved to dir2. If dir1 is not already available then dir1 will be renamed to dir2. 
+
+
+Summary of Directory related Commands: 
+mkdir dir1 
+mkdir dir1 dir2 dir3 
+mkdir dir1/dir2/dir3 
+mkdir -p dir1/dir2/dir3 
+mkdir dir{1..6} 
+rmdir dir1 
+rmdir dir1 dir2 dir3 
+rm -r dir1 
+rm -ri dir1 
+rm -rf dir1 
+rm -rv dir1 
+rm -r dir* 
+rm -r dir{2..6} 
+rm -r dir[2,4] 
+cp file1.txt file2.txt 
+cp file1.txt file2.txt file3.txt output 
+cp dir1/* dir2 
+cp -r dir1 dir2 
+mv file1.txt file2.txt 
+mv dir1 dir2 (rename b'z dir2 not available) 
+mv dir1/* dir2 
+mv dir1 dir2 (move dir1 to dir2 because dir2 available) 
+cd 
+cd ../../.. 
+cd / 
+cd ~ 
+cd -

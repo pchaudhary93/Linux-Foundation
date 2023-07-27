@@ -1,0 +1,211 @@
+Lab 5 Working with Files
+
+
+
+
+1) Creation of Files 
+2) Viewing of Files 
+3) Copying of Files 
+4) Comparison of Files 
+5) Renaming of files 
+6) Deleting Files 
+7) Creation of Hidden files and directories 
+8) Creation of Link Files 
+9) Editing of Files 
+
+
+
+
+1) Creation of Files: 
+In Linux, we can create files in the following ways: 
+1) By using touch command (to create empty file) 
+2) By using cat command 
+3) By using editors like gedit, vi, nano etc 
+
+
+cat Command: 
+cat > file1.txt 
+Eg: 
+$ cat > file1.txt 
+Hello Friends 
+Listen Carefully 
+Stay home stay safe
+ctrl+d 🡪 To save and exit 
+
+If file1.txt is not already available, then file1.txt will be created with our provided data. 
+If file1.txt is already available with some content, then old data will be over written with our provided new data. 
+Instead of overwriting, if we want append operation then we should use >> with cat command. 
+cat >> file1.txt 
+extra content 
+ctrl+d
+
+
+Use Case:Diagram_usecase_of_touch_command_for_existing_non_empty_file
+
+
+Assume that we write one shell script. The job of this shell script is to send all current date files to remote server. Assume that this script won't be executed on sat and sun. But on Monday all 3 days files have to be send. 
+But the problem with this script is it can recognize only current date files. To change timestamp of sat and Sunday files, we have to use touch command. 
+Note: We can use touch command for the following two purposes: 
+1) To create an empty file. 
+2) To change timestamp of existing file. 
+
+
+2) View content of the files 
+We can view content of the file by using the following commands 
+1) cat 
+2) tac 
+3) rev 
+4) head 
+5) tail 
+6) less 
+7) more 
+
+
+1 Cat
+
+2. tac Command: 
+It is the reverse of cat. 
+It will display file content in reverse order of lines. i.e first line will become last line and last line will become first line. 
+This is vertical reversal.
+
+3. rev Command: 
+rev means reverse. 
+Here each line content will be reversed. 
+It is horizontal reversal. 
+
+
+Note: cat command will display total file content at a time. It is best suitable for small files. If the file contains huge lines then it is not recommended to use cat command. We should go for head, tail, less and more commands. 
+
+
+4. head Command: 
+
+
+* We can use head command to view top few lines of content. 
+* head file1.txt 
+* It will display top 10 lines of file1.txt. 
+* 10 is the default value of number of lines. 
+* 
+
+ 
+
+5. tail Command: 
+* We can use tail command to view few lines from bottom of the file. 
+* It is opposite to head command. 
+
+
+* tail file1.txt 
+Last lines will be displayed. 
+* tail -n 30 file1.txt OR tail -30 file1.txt OR tail -n -30 file1.txt 
+It will display last 30 lines. 
+
+
+* tail -c 200 file1.txt 
+It will display 200 bytes of content from bottom of the file. 
+
+
+6. more Command: 
+
+
+We can use more command to view file content page by page. 
+more file1.txt 
+* It will display first page. 
+* Enter 🡪 To view next line 
+* Space Bar 🡪 To view next page 
+* q 🡪 To quit/exit 
+
+
+7. less Command: 
+* By using more command, we can view file content page by page only in forward direction. 
+* If we want to move either in forward direction or in backward direction then we should go for less command. 
+
+
+less file1.txt 
+It will display first page 
+d 🡪 To go to next page.(d means down) 
+b 🡪 To go to previous page. (b means backward)
+
+
+Creation of Hidden files and Directories: 
+* If any file starts with '.' , such type of file is called hidden file. 
+* If we don't want to display the files then we have to go for hidden files. 
+* Hidden files meant for hiding data. All system files which are internally required by kernal are hidden files. 
+* We can create hidden files just like normal files, only difference is file name should starts with dot. 
+
+
+touch .tom.txt 
+cat > .mat.txt 
+  
+Even by using editors also we can create hidden files. 
+We can create hidden directories also just like normal directories. 
+mkdir .dirA
+  
+
+Note: By using hidden files and directories we may not get full security. To make more secure we have to use proper permissions. For this we should use 'chmod' command. 
+
+Interconversion of Normal Files and Hidden Files: 
+
+
+Based on our requirement, we can convert normal file as hidden file and viceversa. 
+mv a.txt .a.txt 
+We are converting normal file a.txt as hidden file
+  
+
+mv .a.txt a.txt 
+
+
+Similarly directories also 
+mv dir1 .dir1 
+
+
+Copying of Files
+
+cp file1.txt file2.txt
+ 
+If file2.txt not available, then file2.txt will be created and the content will be copied. 
+If file2.txt is already available and contanis some data then that data will be overwritten with file1.txt data.
+
+
+Before overwriting if we want confirmation, then we should go for -i option. 
+i means interactive. 
+cp -i file1.txt file2.txt 
+
+
+If we want verbose output then we can use -v option. 
+cp -v file1.txt file2.txt 
+
+
+cp file1.txt file2.txt file3.txt file4.txt output 
+Note: To copy multiple files content to the single file, we should not use cp command. 
+we should use cat command. 
+cp a.txt b.txt c.txt 4.txt 🡪 Invalid 
+cp: target 'd.txt' is not a Directory 
+cat a.txt b.txt c.txt > 4.txt 🡪 Valid
+
+
+Moving and Renaming Directories: 
+Both moving and renaming activities can be performed by using single command: mv 
+1) Renaming of Files: 
+* mv oldname newname 
+* mv file1.txt file2.txt 
+* file1.txt will be renamed to file2.txt 
+
+
+2) Renaming of Directories: 
+* mv dir1 dir2 
+* dir1 will be renamed to dir2 
+*   
+
+
+3) Moving of files from one directory to another directory: 
+* mv sample1/* sample2 
+* All files of dir1 will be moved to dir2. After executing this command, dir1 will come empty. 
+
+
+4) Move total directory to another directory: 
+* mv dir1 dir2 
+* dir1 will be moved to dir2
+
+ 
+* In the case of overwriting, if we want confirmation alert then we can use -i option with mv command. 
+* $ mv -i a.txt d.txt dir2 
+* mv: overwrite 'dir1/a.txt'?
