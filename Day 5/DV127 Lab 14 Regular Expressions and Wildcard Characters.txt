@@ -1,0 +1,86 @@
+Lab 14 Regular Expressions and Wildcard Characters
+
+
+If we want to represent a group of strings according to a particular pattern, then we should go for regular expressions. 
+
+
+By using wildcard characters, we can build regular expressions. 
+A wildcard character can be used as a substitute for required sequence of characters in the 
+regular expression. 
+
+
+1) 🡪 Represents zero or more characters 
+2) ? 🡪 Represents only one character 
+3) []🡪 Range of characters 
+4) [abc] 🡪 Either a or b or c 
+5) [!abc] 🡪Any character except a,b and c 
+6) [a-z] 🡪 Any lower case alphabet symbol 
+7) [A-Z] 🡪 Any upper case alphabet symbol 
+8) [a-zA-Z] 🡪 Any alphabet symbol 
+9) [0-9] 🡪 Any digit from 0 to 9 
+10) [a-zA-Z0-9] 🡪 Any alphanumeric character 
+11) [!a-zA-Z0-9] 🡪 Except alpha numeric character (i.e special symbol) 
+12) [[:lower:]] 🡪 Any lower case alphabet symbol 
+13) [[:upper:]] 🡪 Any upper case alphabet symbol 
+14) [[:alpha:]] 🡪 Any alphabet symbol 
+15) [[:digit:]] 🡪 Any digit from 0 to 9 
+16) [[:alnum:]] 🡪 Any alpha numeric character 
+17) [![:digit:]] 🡪 Any character except digit 
+18) {} 🡪 List of files with comma separator 
+
+
+Following are some wild card character:-
+
+
+1. To list out all files present in current working directory 🡺 $ ls * 
+
+
+2. To list out all files with some extension 🡺 $ ls *.* 
+
+3) To list out all files starts with a 🡺 $ ls a* 
+
+
+4) To list out all files starts with a and ends with t 🡺 $ ls a*t 
+
+
+5) To list out all files where file name contains only 2 characters and first character should be 'a'  🡺 $ ls a? 
+
+
+6) To list out all files where file name contains only 3 characters 🡺 $ ls ??? 
+
+
+7) To list out all files where file name contains at least 3 characters 🡺 $ ls ???* 
+
+
+8) To list out all files where file name starts with a or b or c 🡺 $ ls [abc]* 
+
+
+9) To list out all files where file name should not starts with a, b and c 🡺 $ ls [!abc]* 
+
+
+10) To list out all files starts with lower case alphabet symbol 
+$ ls [a-z]* 
+
+
+11) To list out all files starts with digit. 
+$ ls [0-9]* 
+
+
+
+Note: We can use these wildcard characters with the following commands also. 
+cp, mv, rm 
+
+
+1) To copy all files starts with digit to dir1 directory. 
+$cp [[:digit:]]* dir1 
+
+
+$cp [0-9]* dir1 
+
+
+2) To move all files starts with alphabet symbol and with .txt extension to dir2 directory? 
+$mv [[:alpha:]]*.txt dir2 
+
+
+3) Remove all files starts with a or b or c and ends with e or t. 
+$rm [abc]*[et]

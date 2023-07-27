@@ -1,0 +1,68 @@
+Lab 16 Compression and Uncompression of files (tar, gzip, bzip2, bunzip2)
+
+
+As part of admin activity, it is a very common requirement to pack and compress a group of files. The main advantages are: 
+1) It improves memory utilization 
+2) Transportation will become very easy 
+3) It reduces download times 
+
+
+This process involves the following 2 activities: 
+1) Creation of Archive file 
+2) Apply compression algorithms on that archive file 
+
+
+1. Creation of Archive File 
+We can group multiple files and directories into a single archive file by using tar command. 
+tar 🡪 tape archive 
+A) To create tar file 
+tar -cvf demo.tar file1.txt file2.txt file3.txt 
+tar -cvf demo.tar * 
+
+
+B) To display table of contents of tar file 
+tar -tvf demo.tar 
+
+
+C) To Extract contents of tar file 
+tar -xvf demo.tar 
+
+
+2. Apply Compression Algorithms on that Archive File: 
+
+
+There are multiple compression and decompression algorithms. 
+1. gzip 🡪 It is very fast but less compression power 
+2. bzip2 🡪 It is a bit slow but more compression power 
+
+
+Compression and Decompression by using gzip: 
+1. To Compress tar file 
+$ gzip demo.tar 
+demo.tar.gz 🡪 This file got created 
+
+
+2. To uncompress gz file: 
+$ gzip -d demo.tar.gz OR $ gunzip demo.tar.gz 
+🡪 This command will provide our original tar file
+ 
+
+How to create tar File and compress in a Single Command: 
+1. By using gzip compression algorithm 
+To create tar and then compress 
+$ tar -cvzf demo.tar *.txt 
+z option will do compression 
+demo.tar will be created and it is already compressed 
+
+To uncompress and extract tar file 
+$ tar -xvzf demo.tar 
+
+
+Use Case: Backup of Total User Home Directory 
+
+
+$ tar -cvzf backup.tar * 
+$mkdir newhome 
+$mv backup.tar newhome 
+$cd newhome 
+$ tar -xvzf backup.tar

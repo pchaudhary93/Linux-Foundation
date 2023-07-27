@@ -1,0 +1,148 @@
+Lab 11 Input and Output of Commands and Redirection
+  
+
+
+
+Commands can take input, perform required operation and produces some output. 
+While executing command if anything goes wrong then we will get error message.
+ 
+Command can take input either from standard Input or from command line arguments. 
+Command will produce results to either Standard output or Standard Error.
+ 
+Standard Input, Standard Output and Standard Error are Data Streams and can flow from one place to another place. Hence redirection and piping are possible. 
+
+
+Command Line arguments are static and these are not streams. Hence redirection and piping concepts are not applicable to command line arguments. 
+
+
+These data streams are associated with some numbers. 
+Standard Input associated with 0. 
+Standard Output associated with 1. 
+Standard Error associated with 2. 
+
+
+Bydefault Standard input connected with keyboard, Standard output and Standard Error connected with Terminal. But we can redirect. 
+
+
+Standard Input from the keyboard and output to Standard Ouput Device: 
+
+
+$cat 
+
+
+read required input from the keyboard 
+this data will be displayed to the standard output. 
+ctrl+d 
+
+
+Note: For the cat command if we are not providing any arguments, then the input will be taken from standard input device (keyboard) and display the output to the standard output device (Terminal).
+
+
+$ cat 
+
+
+This is data provided from Standard Input 
+This is data provided from Standard Input 
+
+
+Input from command line arguments and error messages to the Standard Error: 
+
+
+$ rm file100 
+rm: cannot remove 'file100': No such file or directory 
+
+
+We are providing filename as command line argument to the rm command. 
+Specified file not available and hence this command will produces error message to the Standard Error device (Terminal). 
+
+
+Note: Some commands may accept Standard Input and Some commands may accept command line arguments. 
+
+
+
+
+1) rm command will always accept command line arguments only. 
+
+
+rm file1 file2 
+
+
+2) echo command will always aceept command line arguments only. 
+
+
+echo "date" 
+
+
+3) cat command can accept input either from standard input or from comamnd line arguments. 
+
+
+
+Redirection 
+
+
+As Standard Input, Standard Ouput and Standard Error are Data streams, we can redirect these streams. 
+
+
+Redirecting Standard Ouput: 
+
+
+We can redirect standard output by using > and >> symbols. 
+
+
+> will perform overwriting of existing data 
+>> will perform appending to existing data 
+
+
+Eg 1: To redirect the standard output of cat command from terminal to output.txt 
+
+
+$cat 1> output.txt 
+sample data 
+ctrl+d 
+
+
+sample data won't be displayed to the terminal and will write to output.txt 
+Redirection symbol > is always associated with 1 by default. Hence we are not required to specify 1 explicilty.
+$cat > output.txt 
+sample data 
+ctrl+d 
+Instead of overwriting if we want to perform appending then we should use >>. 
+
+
+Redirecting Standard Error: 
+
+
+We can redirect error messages from the terminal to our own file by using > and >> symbols. 
+$ cal 34 w3892384208342 2>> error.txt 
+Now error message won't be displayed to the console and will written to error.txt. 
+For error redirection 2 is mandatory. 
+
+
+Redirecting Standard Input: 
+We can redirect standard input from keyboard to our required file. 
+We can perform input redirection by using < symbol. 
+$cat 0< a.txt 1>>output.txt 2>>error.txt 
+< symbol is always associated with 0 by default. Hence we can remove. 
+$cat < a.txt >>output.txt 2>>error.txt 
+
+
+***Note: To redirect both standard output and standard error to the same destination we can use shortcut as follows 
+$ cat < a.txt &> output.txt 
+&> means both standard output and standard error. 
+
+
+Redirecting Standard output from one terminal to another terminal: 
+
+
+
+
+In unix every thing is treated as file even our terminal also. 
+We can find terminal related file by using tty command. 
+termainal - 2: 
+$ tty 
+/dev/pts/1 
+terminal - 1: 
+$ls -l 1> /dev/pts/1 
+
+
+terminal-1 long listing output will be displayed to terminal-2

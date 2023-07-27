@@ -1,0 +1,36 @@
+Lab 13 How to Use Multiple Commands in a Single Line
+
+
+We can execute multiple independent commands in a single line by using the following two ways 
+
+
+1st Way: By using semicolon (;) 
+
+
+cmd1;cmd2;cmd3;.....;cmdn 
+First cmd1 will be executed and then cmd2 followed by rest of the commands. 
+If any command fails in the middle, still rest of the commands will be executed. 
+
+
+
+
+2nd Way: By using && 
+cmd1 && cmd2 && cmd3 &&..... && cmdn 
+
+
+First cmd1 will be executed and then cmd2 followed by rest of the commands. 
+If any command fails in the middle, then rest of the commands won't be executed. 
+
+
+Eg: 
+create a directory dir1 
+create files a.txt,b.txt,c.txt in that dir1 
+write current system date and time to a.txt 
+write current month calendar to b.txt 
+
+
+mkdir dir1 ; touch dir1/{a,b,c}.txt ; date > dir1/a.txt ; cal > dir1/b.txt 
+
+
+
+mkdir dir1 && touch dir1/{a,b,c}.txt && date > dir1/a.txt && cal > dir1/b.txt

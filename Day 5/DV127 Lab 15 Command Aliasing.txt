@@ -1,0 +1,90 @@
+Lab 15 Command Aliasing
+
+
+Alias means other alternative name or nickname. 
+We can give our own more convenient nicknames for linux commands. This concept is called command aliasing. 
+
+
+Note: we can use type command, to check whether the command is already available or not. 
+
+
+How to create alias names: 
+$ alias nickname='original command' 
+$ alias nickname="original command" 
+  
+
+After aliasname space is not allowed. Hence the following are invalid 
+alias nickname ='original command' 
+alias nickname= 'original command' 
+alias nickname = 'original command' 
+
+
+How to list all available aliases: 
+By using alias command without any arguments 
+$alias 
+ 
+
+How to remove alias names: 
+By using unalias command. 
+$unalias alias_name 
+  
+
+Where we can use aliasing: 
+
+
+1. If any lengthy command repeatedly required, then we can create shortcut alias name and we can use that short alias name every time. 
+
+
+alias d20f='mkdir dir1;touch dir1/file{1..20}.txt' 
+
+
+
+Eg: To list out all files present in current working directory, save this data to output.txt and display the number of lines to the terminal. Define alias name 'current' for this total activity. 
+
+
+alias current='ls -l | tee output.txt | wc -l' 
+
+
+2. To use other operating system (like windows) commands directly in linux 
+
+
+alias cls='clear' 
+
+
+alias rename='mv' 
+
+
+3. To handle language barriers: 
+In Germany datum means date. 
+alias datum='date' 
+
+
+How to persist aliases permanently? 
+
+
+Whatever aliases we created, are bydefault available only in the current session. Once we close the terminal, all aliases will be lost. 
+But we can make our created aliases permanently in our system by using the following 2 ways: 
+
+
+1st Way: 
+We have to define our aliases in .bashrc file present in our home directory. 
+gedit .bashrc 
+
+
+Add the following lines in that file. 
+# myown aliases 
+alias cls='clear' 
+alias ddd='date;date;date' 
+  
+
+Note: To reflect these aliases, compulsory we have to close and open terminal. 
+
+2nd Way: 
+Instead of editing .bashrc file, we can create our own file to maintain our defined aliases. 
+The name of the file should be .bash_aliases and should be present in home directory.
+.bash_aliases 
+alias ccc='cal;cal;cal' 
+alias ct='cal;date' 
+
+
+Note: To reflect these aliases, compulsory we have to close and open terminal.
