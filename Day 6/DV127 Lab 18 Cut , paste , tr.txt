@@ -1,0 +1,128 @@
+Lab 18 Cut, Paste and tr Commands
+
+
+We can use the cut command to extract data from the file. 
+The file should contain column formatted data, i.e. tabular data. 
+
+emp.dat 
+
+1) Display Character on specific Position in every Record: 
+
+
+$ cut -c 9 emp.dat 
+-c meant for specific character 
+It will display 9th characters in every record
+
+
+2) Display Range of Characters in every Record: 
+
+
+$cut -c 5-9 emp.dat 
+It will display 5th to 9th characters in every record 
+
+
+ $cut -c 17- emp.dat 
+It will display 17 character to last character in every record 
+
+
+$ cut -c -17 emp.dat 
+It will display from 1st character to 17 character in every record. 
+
+
+$ cut -c 3-5,7-10 emp.dat 
+It will display 3rd to 5th character and 7th to 10th character in every record.
+
+3) Display Specific Column Data: 
+
+
+$ cut -d '|' -f 4 emp.dat 
+-d means delimiter (separator). The default delimiter is tab. 
+-f means field 
+It will display 4th  Field (OR Column ) data. 
+
+
+4) Display Range of Columns: 
+
+
+$ cut -d '|' -f 2-3 emp.dat 
+It will display 2nd and 3rd Columns data. 
+
+$ cut -d '|' -f 2- emp.dat 
+It will display from 2nd column to last column data. 
+
+$ cut -d '|' -f -3 emp.dat 
+It will display from 1st column to 3rd column data. 
+
+$ cut -d '|' -f 1,3,5 emp.dat 
+It will display 1st, 3rd and 5th column data. 
+
+5) Skip specific Column: 
+
+
+Display all columns except specific column 
+
+
+$ cut -d '|' --complement -f3 emp.dat 
+It will display all columns data except 3rd column. 
+
+paste Command: 
+
+
+We can use paste command to join two or more files horizontally by using some delimiter. Default delimiter is tab. 
+Syntax: $ paste file1 file2 ... 
+
+
+Eg: 
+$ cat > subjects.txt 
+
+$ cat > fee.txt 
+
+$ paste subjects.txt fee.txt 
+
+We can specify delimiter explicitly by using -d option. 
+$ paste -d '-' subjects.txt fee.txt 
+
+
+Note: Delimiter should be only one character. If we are providing more than one character, then it will consider only first character. 
+
+tr Command: 
+
+
+tr means translate. 
+This command translates character by character. 
+
+
+$ cat > demo.txt 
+While learning unix not required to eat. 
+  
+$ tr 'aeiou' 'AEIOU' < demo.txt 
+
+
+It will replace lower case vowels with upper case vowels in demo.txt 
+WhIlE lEArnIng UnIx nOt rEqUIrEd tO EAt. 
+
+2) $ tr '[a-z]' '[A-Z]' < demo.txt 
+
+
+Every lower case alphabet symbol will be replaced with upper case alphabet symbol. 
+WHILE LEARNING UNIX NOT REQUIRED TO EAT. 
+
+
+3) $ tr '[a-zA-Z]' '[A-Za-z]' < demo.txt 
+Every lower case character will be replaced with upper case character and every upper case character will be replaced with lower case character. 
+tr '[a-zA-Z]' '[A-Za-z]' < demo.txt > temp.txt 
+
+4) $ tr 'aeiou' '7' < demo.txt 
+To replace every lower case vowel with digit 7. 
+
+
+5) $ tr -d 'a' < demo.txt 
+-d means delete 
+It will delete all occurrence of 'a' in demo.txt 
+$ tr -d 'aeiou' < demo.txt 
+It will delete all lower case vowels in demo.txt 
+
+
+6) $ tr -s 'a' < demo.txt 
+It replaces sequence of a's with a single a. 
+-s means squeeze-repeats.

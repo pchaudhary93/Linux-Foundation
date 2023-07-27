@@ -1,0 +1,180 @@
+Lab 20 Working with Editors
+
+
+
+
+We can use editors to edit file content. 
+There are multiple editors available. 
+
+
+1) vi editor 
+2) nano editor 
+
+
+1. Working with vi Editor: 
+
+vi means visual editor. 
+We can use vi to create new files and to edit content of the existing files. 
+
+
+$ vi file1.txt 
+
+
+If file1.txt is not available, then a new file will be created and opened that file for editing purpose. 
+
+
+To save this empty file we should use :wq (w means save and q means exit) 
+If the file already contains some data then editor will be opened that file and ready for edit. 
+
+
+How to edit the File: 
+There are 3 types of modes in file editing 
+
+
+1) Command Mode: 
+* It is the default mode. 
+* Here we can use any vi command. 
+* From command mode, we can enter into insert mode by using multiple ways, but mostly by using i. 
+
+
+ 2) Insert Mode OR Input Mode: 
+* In this mode, we can modify file data. We can insert/append new data. 
+* From insert mode, we can enter into command mode by using <Esc> key. 
+
+
+3) Exit Mode: 
+* To quit from the editor. 
+* From the command mode we have to press: then we can enter into exit mode. 
+
+
+How to Insert and Append Data: 
+A 🡪 To Append data at the end of the line 
+I 🡪 To Insert data at the beginning of the line 
+a 🡪 To append data to the right side of the cursor position (Just after the cursor position) 
+i 🡪 To insert data to the left side of the cursor position (Just before the cursor position)
+
+
+How to Delete Data: 
+
+
+We can delete data either by character wise or by word wise or by line wise. 
+deletion character wise: 
+x 🡪 To delete a single character (del key) 
+3x 🡪 To delete 3 characters. Instead of 3, we can pass any number. 
+X 🡪 To delete previous character (backspace key) 
+3X 🡪 To delete last 3 previous characters 
+
+
+Deletion Words wise: 
+
+
+dw 🡪 To delete current word. 
+3dw 🡪 To delete 3 words 
+
+
+
+
+Deletion Line wise: 
+
+
+dd 🡪 To delete current line 
+3dd 🡪 To delete 3 lines 
+d$ 🡪 Deletes from current position to end of line. 
+d^ 🡪 Deletes from current position to beginning of the line. 
+dgg 🡪 Deletes from beginning of the file to current cursor position. 
+Dg 🡪 Deletes from current position to end of file. 
+
+
+How to Replace Data: 
+r 🡪 Replace current character. 
+R 🡪 To replace multiple characters from the current position. 
+S OR cc 🡪 To replace a single line 
+
+
+Opening New Lines to Insert Data: 
+O🡪 To open a line above the cursor position.(i.e before current line) 
+o 🡪 To open a line below the cursor position (i.e after current line) 
+
+
+Copy and Paste Data: 
+yy 🡪 To Copy a Line (yanking) 
+3yy 🡪 To copy 3 lines 
+yw 🡪 To copy a word 
+3yw 🡪 To copy 3 words 
+y$ 🡪 To copy from current cursor position to end of line. 
+y^ 🡪 To copy from beginning of the line to current cursor position. 
+p 🡪 Paste above the cursor position 
+P 🡪 Paste below the cursor position
+
+
+Cursor Navigation Commands: 
+
+
+k 🡪 Top Arrow 
+j 🡪 Bottom Arrow 
+l 🡪 Right Arrow 
+h 🡪 Left Arrow 
+3k 🡪 3 Times Top Arrow 
+3j 🡪 3 Times Bottom Arrow 
+3l 🡪 3 Times Right Arrow 
+3h 🡪 3 Times Left Arrow 
+$ 🡪 End of the Current Line (End Key) 
+^ 🡪 Beginning of the Current Line (Home Key) 
+H 🡪 Beginning of the Current Page 
+M 🡪 Middle of the Current Page 
+L 🡪 End of the Current Page 
+We are not required to use these because keyboard arrow keys aleady working. 
+b(nb) 🡪 Back to beginning of the Word 
+3b 🡪 Back to beginning of the 3rd (ie 3rd previous Word) 
+e(ne) 🡪 End of the Current Word 
+w(nw) 🡪 Forward to beginning of next Word. 
+G 🡪 Move to last line (ie end of the file) 
+at exit mode 
+:1 🡪 To go to 1st line 
+:7 🡪 To go to 7th line 
+ctrl+f 🡪 One Page Forward (Page Down) 
+ctrl+b 🡪 One Page Backward( Page Up) 
+Note: If we want to perform undo previous operation then we should use 'u' 
+u 🡪 Means undo previous operation 
+
+
+
+Exit Mode Commands: 
+:w 🡪 Save File Data 
+:wq 🡪 Save and Quit from the Editor 
+:q 🡪 Quit Editor 
+:q! 🡪 Force Quit. If we perform any changes those will be discarded. 
+:set nu 🡪 To set line numbers in the editor 
+:set nonu 🡪 To remove line numbers 
+:n 🡪 Place the cursor to the nth line 
+:$ 🡪 Place the cursor to the last line 
+:!<unix_command> 🡪 To execute any command
+
+
+
+Eg: 
+:!date 🡪 To check system date 
+:!cal 🡪 To check calander 
+Note: vi +7 demo.txt 
+open demo.txt and enter into 7th line 
+
+
+Working with nano Editor: 
+
+ It is command line editor. 
+ It can be used to create new files and edit content of existing files. 
+ It is almost like notepad. 
+
+
+Various Options: 
+ctrl+g (F1) Display this help text 
+ctrl+x (F2) Close the current file buffer / Exit from nano 
+ctrl+o (F3) Write the current file to disk 
+ctrl+r (F5) Insert another file into the current one 
+ctrl+w (F6) Search forward for a string or a regular expression 
+ctrl+\ (M-R) Replace a string or a regular expression 
+ctrl+k (F9) Cut the current line and store it in the cutbuffer 
+ctrl+u (F10) Uncut from the cutbuffer into the current line 
+But main important options: 
+ctrl+o 🡪 To save content 
+ctrl+x 🡪 To quit from the editor

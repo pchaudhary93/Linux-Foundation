@@ -1,0 +1,275 @@
+Lab 19 File Permission
+
+
+File Permissions describe the allowed operations by various users. 
+With respect to file permissions, all users are categorized into the following 4 types. 
+
+
+User Categories: 
+user/owner 🡪 Represented by 'u' 
+group 🡪 Represented by 'g' 
+others 🡪 Represented by 'o' 
+all 🡪 Represented by 'a' 
+
+
+Use Case to understand Types of Users: 
+
+
+This project divided into multiple modules. In each module multiple deverlopers are working. 
+1) STUDENTS MODULE 
+
+
+A, B, C, D ARE WORKING 
+2) EMPLOYEES MODULE 
+
+
+X, Y, Z ARE WORKING 
+3) COURSES MODULE 
+
+
+M, N ARE WORKING 
+4) INFRASTRUCTURE MODULE 
+
+
+G, H ARE WORKING
+DEVELOPER 'A' CREATED ONE FILE demo.txt 
+For demo.txt 
+user/owner: A (The person who created the file) 
+group: B,C,D (The persons who are working in the same module) 
+others: X,Y,Z,M,N,G,H (The persons who are working on other modules) 
+
+
+Permission Types: 
+For files and directories, there are 4 types of permissions. 
+1) r 🡪 Read 
+2) w 🡪 Write 
+3) x 🡪 Execute 
+4) - 🡪 No Permission 
+
+
+Table_FilePermissions 
+
+
+Operations related to permissions: 
+We can perform the following 3 operations. 
++ 🡪 Add a particular permission to user|group|other|all 
+- 🡪 Remove a particular permission to user|group|other|all 
+= 🡪 Assignment a particular permission to user|group|other|all 
+
+
+chmod Command: 
+
+
+chmod means change mode. 
+We can use chmod command to change file or directory permissions. 
+
+
+Syntax: $ chmod <user_category><operation><permission> file_name/directory_name 
+
+
+Eg: For user add execute permission,for group add write permission,for others remove read permission 
+$ chmod u+x,g+w,o-r demo.txt
+
+
+How to check Permissions of existing File: 
+By using ls -l command: 
+ls -l 
+  
+
+
+The file permissions are 
+
+
+Total 9 permissions. 
+First 3 are user permissions, 
+next 3 are group permissions and 
+next 3 are others permissions. 
+
+
+user permissions: rw- 
+user can perform both read and write operations but not execute operation 
+
+
+group permissions: r-- 
+group members can perform only read operation and cannot perform write and execute operations 
+
+
+others permissions: r-- 
+other members can perform only read operation and cannot perform write and execute operations. 
+
+
+User Permissions + Group Permissions + Others Permissions 
+order is important 
+Read permission + Write Permission + Execute Permission 
+order is important 
+
+
+Eg 1: $ chmod u+x demo.txt 
+adding execute permission to the user
+  
+
+Eg 2: $ chmod u+w,g+rw,o+r demo.txt 
+adding write permission to the user 
+adding read and write permissions to the group 
+adding read permission to the others 
+
+
+Eg 3: $chmod u+x,g-w,o+w demo.txt 
+adding execute permission to the user 
+removing write permission from the group 
+adding write permission to the others 
+
+
+Eg 4: $ chmod u=rw,g=rw,o=r demo.txt 
+Now user permissions: rw- 
+group permission: rw- 
+others permission: r—
+
+
+Eg 5: $ chmod a=- demo.txt 
+Now user permissions: --- 
+group permission: --- 
+others permission: --- 
+  
+
+Eg 6: $ chmod a=rwx demo.txt 
+Now user permissions: rwx 
+group permission: rwx 
+others permission: rwx
+
+You need to change user if you want to do below steps. 
+
+Read Permission to the File: 
+
+If the file not having read permission then we are not allowed to view content of the file. Hence cat, head, tail, more, less commands won't work. 
+
+Write Permission to the File: 
+If the file not having write permission, then we cannot modify the content of the file. 
+
+Execute Permission to the File: 
+
+
+If the user not has executed permission on any file, then he cannot execute that file as a program. 
+
+Read Permission to the Directory: 
+
+
+If the user has read permission on any directory, then he can list out the contents of that 
+
+
+Write Permission on the Directory: 
+If the user has write permission on any directory, then he is allowed to modify the content of that directory
+
+
+Execute Permission to the Directory: 
+If the user not has executed permission on any directory, then he is not allowed to enter into that directory.
+
+***Note: If the user not having execute permission on any directory, then he cannot perform read and write operations also, because to perform these operations he should enter into that directory which is not possible
+Note: If the user not having read permission on any file, then he cannot execute that file even though he has executed permission. 
+
+Linux vs Security: 
+
+
+The virus files usually created by others. 
+others are not having execute permission on our directories. Hence others are not allowed to add virus files to our directories. 
+Hackers are not having executed permission on our directories. Hence they cannot read our file data. 
+Because of this, Linux is considered as more secured operating system. 
+Linux follows 2 levels of security. 
+1st level: login with credentials 
+2nd level: File and Directory permissions 
+Note: We are using permission types as r,w,x and these are considered as symbolic permissions. But we can also specify permissions by using octal number, such type of permissions are called numeric permissions. 
+
+
+Numeric Permissions: 
+We can specify permissions by using octal number. 
+Octal means base-8 and allowed digits are 0 to 7. 
+0 🡪 000 🡺 No Permission 
+1 🡪 001 🡺 Execute Permission 
+2 🡪 010 🡺 Write Permission 
+3 🡪 011 🡺 Write and execute Permissions 
+4 🡪 100 🡺 Read Permission 
+5 🡪 101 🡺 Read and execute Permissions 
+6 🡪 110 🡺 Read and write Permission 
+7 🡪 111 🡺 Read, Write and execute Permissions
+
+
+Note: 
+4 🡪 Read Permission 
+2 🡪 Write Permission 
+1 🡪 Execute Permission 
+
+
+It is more easy to remember 
+5 🡪 4+1 🡪 r-x 
+3 🡪 2+1 🡪 -wx 
+6 🡪 4+2 🡪 rw- 
+
+
+etc 
+1. Write command for the following permissions 
+For user 🡪 Read and write (6) 
+For group 🡪 Write and execute (3) 
+For others 🡪 Write (2) 
+  
+
+UNIX/LINUX 
+umask Command: 
+
+
+umask means user mask. Hiding permissions. 
+Based on umask value,default permissions will be there for files and directories. 
+The default umask value:022 
+
+
+$ umask 
+0022 
+First 0 is sticky bit mostly used in admin related activities. We have to consider only last 3 digits as umask value. 
+
+Default permissions to the file: 666 - umask value 
+= 666 - 022 
+= 644 (user 🡪 r&w, group 🡪 read, others 🡪 read) 
+$ ls -l file1.txt 
+
+
+Default permissions to the directory= 777 - umask value 
+=777-022 
+=755 (user 🡪 r&w&x, group 🡪 r&x, others 🡪 r&x) 
+
+Based on our requirement we can set our own umask values. 
+$ umask 002 
+$ touch file2.txt 
+$ ls -l file2.txt 
+$ mkdir dir2 
+$ ls -l 
+
+
+Q. For newly created files default permissions should be 444. Then what should be umask value? 
+Ans: 222 
+
+
+Everyone has only read access. 
+Note: The most commonly used umask values are: 022 
+002 
+077 
+007
+Eg: 
+
+
+Negative values won't be considered in linux. 
+
+
+chown Command: 
+
+
+chown means change owner. 
+Only root user can perform this activity. 
+# chown ratzzie demo.txt 
+Now the owner of demo.txt is ratzzie. 
+
+chgrp Command: 
+
+
+chgrp means change group. 
+Only root user can perform this activity. 
+# chgrp ratzzie demo.txt 
+Now the demo.txt belongs to ratzzie group.

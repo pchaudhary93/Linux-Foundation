@@ -1,0 +1,105 @@
+Lab 17 grep Command
+
+
+grep stands for 
+globally search a regular expression and print it 
+global regular expression print. 
+global regular expression parser. 
+
+
+We can use grep command to search the given pattern in a single or multiple files. 
+grep <pattern> filename 
+It prints all matched lines. 
+ 
+
+This is raw data 
+
+
+1) To Search Data in a Single File: 
+# grep 'ross' subjects.txt
+
+
+
+2) To Search in Multiple Files:
+# grep 'ross' subjects.txt career.txt
+ 
+  
+ 
+3) To Search Data by ignoring Case: 
+
+
+Bydefault grep command will consider case. If we want to ignore case then we should use use -i option. 
+
+
+grep ross *.txt
+
+grep -i ross *.txt
+ 
+                                                      
+4) To Display the Number of Occurrences: 
+We have to use -c option. 
+c means count 
+$ grep -c ross *.txt
+ 
+ 
+5) To Display Line Numbers before Results: 
+We have to use -n option. 
+
+
+6) To Display only File Names in which Pattern exists: 
+We have to use -l option. 
+
+
+7) To Print except matched Lines remaining Lines: 
+We have to use -v option. It means inverted. 
+
+
+9) Display before, after and surrounding lines including search results: 
+
+
+We have to use -A,-B,-C options 
+-A means after 
+-B means before 
+-C means before and after 
+
+Search Multiple Content in a File: 
+
+
+grep with -F Option OR fgrep: 
+
+
+fgrep 🡪 "Fixed String Global Regular Expression Print" 
+It will take a group of fixed strings and search for those in the given file. Strings should be separated by new line. 
+
+$ grep -F "java 
+> unix" demo.txt 
+
+Instead of using , -F option, we can use directly fgrep. 
+$ fgrep "java 
+> unix 
+> friends 
+
+
+Note: fgrep can be used only for Strings and cannot be used for regular expressions. 
+Normal grep command cannot understand some regular expression patterns like | symbol. But egrep command can understand any regular expression pattern. Hence egrep is the more powerful than normal grep command.
+Eg: 
+grep -i "(java|unix)" demo.txt 
+
+
+$ egrep -i "(java|unix)" demo.txt 
+
+
+ Character Patterns: 
+
+
+1) $ grep 'd*' demo.txt 
+ It display all lines which contains d followed by any number of characters. 
+ ubuntu not providing support for this. 
+
+
+Word Patterns: 
+\<word\> 🡪 It will always searches for the given word 
+It is exactly same as 
+
+
+$ grep 'friends' demo.txt 
